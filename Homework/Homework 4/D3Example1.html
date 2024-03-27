@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>D3-Display bar chart</title>
+    <!--load the D3 library from the official link -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <style>
+        #chart div{
+            font: 10px sans-serif;
+            background-color: steelblue;
+            text-align: right;
+            padding: 3px;
+            margin: 1px;
+            color: white;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="chart"></div>
+    <script>
+            var data = [170, 86, 168, 281, 303, 365];
+            // D3 provide select()and selectAll()methods to select the DOM element
+            d3.select("#chart") // select the first selection DOM element that matches the criteria. 
+            .selectAll("div")// select all the DOM elements that match the criteria. 
+            .data(data)
+                .enter()// takes data one by one and perform the operation on that. returns place holder for each data element.  
+                .append("div")
+                .style("width", function(d) { return d + "px"; })// the width is the data value as a function. 
+                .text(function(d) { return d; });// takes the data as parameter and return it. 
+    </script>
+  </body>
+</html>
